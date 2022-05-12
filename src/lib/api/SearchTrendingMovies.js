@@ -8,7 +8,7 @@ export const SearchTrendingMovies = async page => {
 			}&page=${page}`
 		);
 
-		console.log(response);
+		// console.log(response);
 		if (response.ok) {
 			const { results: movies, total_pages: totalPages } =
 				await response.json();
