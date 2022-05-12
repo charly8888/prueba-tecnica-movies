@@ -1,5 +1,6 @@
-const TRENDING_MOVIES_PATH = '/trending/all/day';
+const TRENDING_MOVIES_PATH = '/trending/movie/day';
 import { API_HOST } from '../../constants/api.js';
+import movieApiMapper from '../mappers/movieApiMapper.js';
 export const SearchTrendingMovies = async page => {
 	try {
 		const response = await fetch(
@@ -15,7 +16,7 @@ export const SearchTrendingMovies = async page => {
 			return {
 				success: true,
 				data: {
-					movies,
+					movies: movies.map(movie =>movieApiMapper(movie)),
 					totalPages
 				}
 			};

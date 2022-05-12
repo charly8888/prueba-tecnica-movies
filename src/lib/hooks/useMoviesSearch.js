@@ -4,7 +4,7 @@ import {
 	moviesSearchReducer,
 	MOVIES_SEARCH_ACTIONS,
 	MOVIES_SEARCH_INITIAL_STATE
-} from '../reducers/movies-search.reducer';
+} from '../reducers/moviesSearch.reducer';
 
 const searchTrending = async (
 	page,
