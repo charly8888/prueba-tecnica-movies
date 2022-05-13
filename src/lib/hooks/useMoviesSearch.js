@@ -1,12 +1,13 @@
 import { useEffect, useReducer } from 'react';
-import { SearchTrendingMovies } from '../api/SearchTrendingMovies';
+import { searchMoviesApi } from '../api/searchMoviesApi';
 import {
 	moviesSearchReducer,
 	MOVIES_SEARCH_ACTIONS,
 	MOVIES_SEARCH_INITIAL_STATE
 } from '../reducers/moviesSearch.reducer';
 
-const searchTrending = async (
+const searchMovies = async (
+	search,
 	page,
 	searchSuccess,
 	searchError,
@@ -14,7 +15,7 @@ const searchTrending = async (
 ) => {
 	startSearch();
 
-	const { success, data, statusCode } = await SearchTrendingMovies(page);
+	const { success, data, statusCode } = await searchMoviesApi(search, page);
 
 	if (success) searchSuccess(data.movies);
 	else searchError(`Error: ${statusCode}`);
@@ -46,9 +47,20 @@ export const useMoviesSearch = () => {
 			type: MOVIES_SEARCH_ACTIONS.SET_PAGE,
 			page
 		});
+	const setSearchTerm = searchTerm =>
+		setMoviesSearch({
+			type: MOVIES_SEARCH_ACTIONS.SET_SEARCH_TERM,
+			searchTerm
+		});
 
 	useEffect(() => {
-		searchTrending(moviesSearch.page, searchSuccess, searchError, startSearch);
-	}, [moviesSearch.page]);
-	return { ...moviesSearch, setPage };
+		searchMovies(
+			moviesSearch.searchTerm,
+			moviesSearch.page,
+			searchSuccess,
+			searchError,
+			startSearch
+		);
+	}, [moviesSearch.page, moviesSearch.searchTerm]);
+	return { ...moviesSearch, setPage,setSearchTerm };
 };
