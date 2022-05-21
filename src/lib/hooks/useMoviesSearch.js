@@ -54,13 +54,18 @@ export const useMoviesSearch = () => {
 		});
 
 	useEffect(() => {
-		searchMovies(
-			moviesSearch.searchTerm,
-			moviesSearch.page,
-			searchSuccess,
-			searchError,
-			startSearch
+	const timeoutId = 	setTimeout(
+			() =>
+				searchMovies(
+					moviesSearch.searchTerm,
+					moviesSearch.page,
+					searchSuccess,
+					searchError,
+					startSearch
+				),
+			200
 		);
+		return ()=> clearTimeout(timeoutId)
 	}, [moviesSearch.page, moviesSearch.searchTerm]);
-	return { ...moviesSearch, setPage,setSearchTerm };
+	return { ...moviesSearch, setPage, setSearchTerm };
 };
