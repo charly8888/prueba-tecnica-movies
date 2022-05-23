@@ -2,6 +2,7 @@ export const MOVIES_SEARCH_INITIAL_STATE = {
 	movies: undefined,
 	searchTerm: '',
 	page: 1,
+	total_pages: 1,
 	error: undefined,
 	loading: false
 };
@@ -27,6 +28,7 @@ export const moviesSearchReducer = (state, action) => {
 				...state,
 				movies: action.movies,
 				error: undefined,
+				total_pages: action.total_pages,
 				loading: false
 			};
 		case MOVIES_SEARCH_ACTIONS.SEARCH_ERROR:

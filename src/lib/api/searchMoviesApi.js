@@ -1,5 +1,5 @@
 import { API_HOST } from '../../constants/api.js';
-import movieApiMapper from '../mappers/movieApiMapper.js';
+import movieApiMapper from '../mappers/movieApi.mapper.js';
 
 const SEARCH_PATH = '/search/movie';
 const TRENDING_MOVIES_PATH = '/trending/movie/day';
