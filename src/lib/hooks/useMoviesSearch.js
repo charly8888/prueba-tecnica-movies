@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 import { searchMoviesApi } from '../api/searchMoviesApi';
 import {
 	moviesSearchReducer,
@@ -26,7 +26,7 @@ export const useMoviesSearch = () => {
 		moviesSearchReducer,
 		MOVIES_SEARCH_INITIAL_STATE
 	);
-
+	const isInitialized = useRef(false);
 	const startSearch = () =>
 		setMoviesSearch({ type: MOVIES_SEARCH_ACTIONS.START_SEARCH });
 
@@ -54,18 +54,21 @@ export const useMoviesSearch = () => {
 		});
 
 	useEffect(() => {
-	const timeoutId = 	setTimeout(
-			() =>
-				searchMovies(
-					moviesSearch.searchTerm,
-					moviesSearch.page,
-					searchSuccess,
-					searchError,
-					startSearch
-				),
-			200
-		);
-		return ()=> clearTimeout(timeoutId)
+		const searchTimeOut = () =>
+			searchMovies(
+				moviesSearch.searchTerm,
+				moviesSearch.page,
+				searchSuccess,
+				searchError,
+				startSearch
+			);
+		if (!isInitialized.current) {
+			searchTimeOut();
+			isInitialized.current = true;
+		} else {
+			const timeoutId = setTimeout(searchTimeOut, 200);
+			return () => clearTimeout(timeoutId);
+		}
 	}, [moviesSearch.page, moviesSearch.searchTerm]);
 	return { ...moviesSearch, setPage, setSearchTerm };
 };
