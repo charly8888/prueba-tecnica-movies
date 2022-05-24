@@ -1,4 +1,8 @@
-body{
-  background-color: var(--color-bg);
-  color: var(--color-text);
+body {
+	@apply bg-bg;
+	font-family: 'Poppins', sans-serif;
+	@apply text-text;
+}
+input{
+  outline: none;
 }

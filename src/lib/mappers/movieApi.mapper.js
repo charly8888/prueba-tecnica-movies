@@ -5,11 +5,15 @@ const movieApiMapper = ({
 	title,
 	poster_path,
 	release_date,
-	vote_average
+	overview,
+	vote_average,
+	backdrop_path
 }) => ({
 	id,
 	title,
+	description: overview,
 	image: `${API_IMAGE_HOST}${poster_path}`,
+	landscapeImage: `${API_IMAGE_HOST}${backdrop_path}`,
 	year: new Date(release_date).getFullYear(),
 	rating: vote_average
 });

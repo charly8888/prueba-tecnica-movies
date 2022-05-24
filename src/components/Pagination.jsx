@@ -1,5 +1,5 @@
-import ArrowLeft from './icons/arrowLeft';
-import ArrowRight from './icons/arrowRight';
+import ArrowLeft from './icons/ArrowLeft';
+import ArrowRight from './icons/ArrowRight';
 
 const Pagination = ({ page, totalPages, setPage }) => {
 	const isBackDisable = page === 1;

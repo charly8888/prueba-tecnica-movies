@@ -1,7 +1,7 @@
 
 import MovieCard from './Moviecard';
 
-const MoviesGrid = ({ movies , error , loading}) => {
+const MoviesGrid = ({ movies , error , loading, setPreviewMovie}) => {
 
 
 	if (error) return <p>{error}</p>;
@@ -16,6 +16,7 @@ const MoviesGrid = ({ movies , error , loading}) => {
 					image={movie.image}
 					year={movie.year}
 					rating={movie.rating}
+					setPreviewMovie={setPreviewMovie}
 				/>
 			))}
 		</div>
