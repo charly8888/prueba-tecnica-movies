@@ -1,4 +1,7 @@
-import { API_IMAGE_HOST } from '../../constants/api';
+import {
+	API_IMAGE_LANDSCAPE_HOST,
+	API_IMAGE_PORTRAIT_HOST
+} from '../../constants/api';
 
 const movieApiMapper = ({
 	id,
@@ -12,8 +15,8 @@ const movieApiMapper = ({
 	id,
 	title,
 	description: overview,
-	image: `${API_IMAGE_HOST}${poster_path}`,
-	landscapeImage: `${API_IMAGE_HOST}${backdrop_path}`,
+	image: `${API_IMAGE_PORTRAIT_HOST}${poster_path}`,
+	landscapeImage: `${API_IMAGE_LANDSCAPE_HOST}${backdrop_path}`,
 	year: new Date(release_date).getFullYear(),
 	rating: vote_average
 });

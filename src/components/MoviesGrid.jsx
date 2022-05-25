@@ -1,9 +1,6 @@
-
 import MovieCard from './Moviecard';
 
-const MoviesGrid = ({ movies , error , loading, setPreviewMovie}) => {
-
-
+const MoviesGrid = ({ movies, error, loading, setPreviewMovie }) => {
 	if (error) return <p>{error}</p>;
 	if (loading) return <h1>Cargando...</h1>;
 
@@ -16,6 +13,8 @@ const MoviesGrid = ({ movies , error , loading, setPreviewMovie}) => {
 					image={movie.image}
 					year={movie.year}
 					rating={movie.rating}
+					landscapeImage={movie.landscapeImage}
+					description={movie.description}
 					setPreviewMovie={setPreviewMovie}
 				/>
 			))}

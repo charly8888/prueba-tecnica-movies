@@ -1,11 +1,32 @@
-import { API_IMAGE_HOST } from '../constants/api';
+import { API_IMAGE_PORTRAIT_HOST } from '../constants/api';
 
-const MovieCard = ({ title, image, year, rating , setPreviewMovie}) => {
+const MovieCard = ({
+	title,
+	image,
+	year,
+	rating,
+	landscapeImage,
+	description,
+	setPreviewMovie
+}) => {
 	return (
-		<div className='w-1/5 p-4' onClick={()=>setPreviewMovie({title})}>
+		<div
+			className='w-1/5 p-4'
+			onClick={() =>
+				setPreviewMovie({
+					title,
+					image,
+					year,
+					rating,
+					landscapeImage,
+					description,
+					setPreviewMovie
+				})
+			}
+		>
 			<div
 				style={{
-					backgroundImage: `url(${API_IMAGE_HOST}${image})`
+					backgroundImage: `url(${API_IMAGE_PORTRAIT_HOST}${image})`
 				}}
 				className='relative aspect-2/3 bg-cover bg-gray'
 			>

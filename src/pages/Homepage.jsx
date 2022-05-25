@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Modal from '../components/Modal';
+import MoviePreview from '../components/MoviePreview';
 import MoviesGrid from '../components/MoviesGrid';
 import Pagination from '../components/Pagination';
 import { useMoviesSearch } from '../lib/hooks/useMoviesSearch';
@@ -18,7 +19,7 @@ const Homepage = () => {
 	} = useMoviesSearch();
 
 	return (
-		<div className='container container-xl mx-auto '>
+		<div className='container  mx-auto '>
 			<div className='flex justify-between items-center w-full p-4'>
 				<input
 					className='py-2 px-4 bg-transparent border border-white'
@@ -29,10 +30,15 @@ const Homepage = () => {
 				/>
 				<Pagination page={page} totalPages={total_pages} setPage={setPage} />
 			</div>
-			<MoviesGrid movies={movies} loading={loading} error={error} setPreviewMovie={setPreviewMovie}/>
+			<MoviesGrid
+				movies={movies}
+				loading={loading}
+				error={error}
+				setPreviewMovie={setPreviewMovie}
+			/>
 			{previewMovie && (
-				<Modal closeModal={()=>setPreviewMovie()}>
-					<p>{previewMovie.title}</p>
+				<Modal closeModal={() => setPreviewMovie()}>
+					<MoviePreview {...previewMovie} />
 				</Modal>
 			)}
 		</div>

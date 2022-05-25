@@ -1,9 +1,11 @@
 import { createPortal } from 'react-dom';
 
-const Modal = ({ children, closeModal }) =>
-	createPortal(
+const Modal = ({ children, closeModal }) => {
+	const asda_asasdad_ada = 123;
+
+	return createPortal(
 		<div className=' flex justify-center items-center fixed inset-0 bg-overlay'>
-			<div className='bg-bg p-4 relative'>
+			<div className='bg-bg p-4 relative max-w-4xl '>
 				{children}
 				<button
 					onClick={closeModal}
@@ -15,5 +17,6 @@ const Modal = ({ children, closeModal }) =>
 		</div>,
 		document.getElementById('modal-container')
 	);
+};
 
 export default Modal;
