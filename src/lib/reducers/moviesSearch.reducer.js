@@ -46,7 +46,7 @@ export const moviesSearchReducer = (state, action) => {
 		case MOVIES_SEARCH_ACTIONS.SET_SEARCH_TERM:
 			return {
 				...state,
-				searchTerm: action.searchTerm
+				searchTerm: action.searchTerm,
 			};
 		default:
 			throw new Error('Invalid action');

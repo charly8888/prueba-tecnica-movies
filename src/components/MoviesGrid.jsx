@@ -9,13 +9,11 @@ const MoviesGrid = ({ movies, error, loading, setPreviewMovie }) => {
 			{movies?.map(movie => (
 				<MovieCard
 					key={movie.id}
+					onClick={() => setPreviewMovie(movie)}
 					title={movie.title}
 					image={movie.image}
 					year={movie.year}
 					rating={movie.rating}
-					landscapeImage={movie.landscapeImage}
-					description={movie.description}
-					setPreviewMovie={setPreviewMovie}
 				/>
 			))}
 		</div>

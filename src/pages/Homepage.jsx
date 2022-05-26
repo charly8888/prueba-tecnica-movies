@@ -15,7 +15,7 @@ const Homepage = () => {
 		loading,
 		setPage,
 		setSearchTerm,
-		total_pages
+		total_pages,
 	} = useMoviesSearch();
 
 	return (

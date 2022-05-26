@@ -15,10 +15,10 @@ export const searchMoviesApi = async (query, page) => {
 	try {
 		const response = await fetch(endpoint);
 
-		// console.log(response);
 		if (response.ok) {
 			const { results: movies, total_pages: totalPages } =
-				await response.json();
+			await response.json();
+			// console.log(movies);
 			return {
 				success: true,
 				data: {
